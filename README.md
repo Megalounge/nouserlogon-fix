@@ -5,11 +5,12 @@ https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe
 
 
 open cmd.exe as admin and install these libraries using the command below
-pip install pywin32
-pip install keyboard
-pip install pyautogui
-pip install opencv-python
-pip install Pillow
+
+`pip install pywin32`
+`pip install keyboard`
+`pip install pyautogui`
+`pip install opencv-python`
+`pip install Pillow`
 
 locate your pythonw.exe in your python install path, open properties and set it to always run as administrator
 
