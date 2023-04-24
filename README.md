@@ -1,7 +1,7 @@
 # nouserlogon-fix
 
 download python from their website
-[url=https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe]python download[/url]
+https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe
 
 
 open cmd.exe as admin and install these libraries using the command below
