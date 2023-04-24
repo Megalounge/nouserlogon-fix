@@ -1,5 +1,7 @@
 # nouserlogon-fix
 
+this script theorectically works on any resolution, you just have to change the ROWS and COLUMNS according to your usual csgo windows setup, for example in 1080p there are 2 ROWS and 5 COLUMNS
+
 download python from their website
 https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe
 
