@@ -26,4 +26,8 @@ Open the python script with IDLE, and Run the module
 
 Profit!
 
-You can run the command `disconnect "No user logon."` in your csgo console to test if this works for you.
+You can run the following command in your csgo console to test if this works for you.
+```
+disconnect "No user logon."
+disconnect "Steam is required to join a game. Please check your connection to Steam and try again."
+```
