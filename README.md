@@ -30,4 +30,5 @@ You can run the following command in your csgo console to test if this works for
 ```
 disconnect "No user logon."
 disconnect "Steam is required to join a game. Please check your connection to Steam and try again."
+disconnect "The remote host stopped receiving communications and closed the connection."
 ```
