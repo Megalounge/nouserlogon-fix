@@ -1,24 +1,28 @@
-# nouserlogon-fix
+# nouserlogon-fix aka csgo popup handler
 
-this script theorectically works on any resolution, you just have to change the ROWS and COLUMNS according to your usual csgo windows setup, for example in 1080p there are 2 ROWS and 5 COLUMNS
+This script theorectically works on any resolution, you just have to change the ROWS and COLUMNS according to your usual csgo windows setup, for example in 1080p there are 2 ROWS and 5 COLUMNS
 
-download python from their website
+# Setting up Python and script
+
+Download python from their website
 https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe
 
-You need to extract ALL files into the same folder, otherwise it will NOT work.
+You need to extract **_ALL_** files into the same folder, otherwise it will **_NOT_** work.
 
 
-open cmd.exe as admin and install these libraries using the command below
+Open `cmd.exe` as admin and install these libraries using the command below
+```
+pip install pywin32
+pip install keyboard
+pip install pyautogui
+pip install opencv-python
+pip install Pillow
+```
+Locate your pythonw.exe in your python install path, open properties and set it to always run as administrator
 
-`pip install pywin32`
-`pip install keyboard`
-`pip install pyautogui`
-`pip install opencv-python`
-`pip install Pillow`
+# Running the script
 
-locate your pythonw.exe in your python install path, open properties and set it to always run as administrator
-
-next open the python script I provided with IDLE, and Run the module
+Open the python script with IDLE, and Run the module
 
 Profit!
 
