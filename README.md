@@ -5,6 +5,8 @@ this script theorectically works on any resolution, you just have to change the 
 download python from their website
 https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe
 
+You need to extract ALL files into the same folder, otherwise it will NOT work.
+
 
 open cmd.exe as admin and install these libraries using the command below
 
