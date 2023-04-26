@@ -22,7 +22,7 @@ pip install pyautogui
 pip install opencv-python
 pip install Pillow
 ```
-Locate your pythonw.exe in your python install path, open properties and set it to always run as administrator
+Locate your `pythonw.exe` in your python install path, open properties and set it to always run as administrator
 
 # Running the script
 
