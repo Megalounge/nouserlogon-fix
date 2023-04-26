@@ -20,7 +20,7 @@ def takess(x, y):
             reconnect_x, reconnect_y = pag.center(reconnect_btn)
             pag.leftClick(reconnect_x, reconnect_y)
             
-    time.sleep(0.5)
+                time.sleep(0.5)
 
 
 while True:
