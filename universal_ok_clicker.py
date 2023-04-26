@@ -21,7 +21,7 @@ def takess(x, y):
             reconnect_x, reconnect_y = pag.center(btn_reconnect)
             pag.leftClick(reconnect_x, reconnect_y)
             
-                time.sleep(0.5)
+            time.sleep(0.5)
 
 
 while True:
@@ -45,6 +45,7 @@ while True:
             btn_x, btn_y = pag.center(btn_ok)
             pag.leftClick(btn_x, btn_y)
             cnt += 1
+            time.sleep(0.1)
             takess(x, y)
             i += 1
             time.sleep(0.05)
@@ -52,6 +53,7 @@ while True:
             btn_x, btn_y = pag.center(btn_confirm)
             pag.leftClick(btn_x, btn_y)
             cnt += 1
+            time.sleep(0.1)
             takess(x, y)
             i += 1
             time.sleep(0.05)
@@ -59,6 +61,7 @@ while True:
             btn_x, btn_y = pag.center(btn_confirm_blue)
             pag.leftClick(btn_x, btn_y)
             cnt += 1
+            time.sleep(0.1)
             takess(x, y)
             i += 1
             time.sleep(0.05)
