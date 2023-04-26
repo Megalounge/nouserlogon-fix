@@ -37,10 +37,7 @@ while True:
         x, y = window.center[0] + 40, window.center[1] + 8
         mid_x, mid_y = window.center
 
-        btn_ok = pag.locateOnScreen('ok.png', region=(mid_x, mid_y, 160, 80), confidence=0.8)
-        btn_confirm = pag.locateOnScreen('confirm.png', region=(mid_x, mid_y, 160, 80), confidence=0.8)
-        btn_confirm_blue = pag.locateOnScreen('blue_confirm.png', region=(mid_x, mid_y, 160, 80), confidence=0.8)
-        
+        btn_ok = pag.locateOnScreen('ok.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
         if btn_ok != None:
             btn_x, btn_y = pag.center(btn_ok)
             pag.leftClick(btn_x, btn_y)
@@ -48,22 +45,29 @@ while True:
             time.sleep(0.1)
             takess(x, y)
             i += 1
-            time.sleep(0.05)
-        elif btn_confirm != None:
-            btn_x, btn_y = pag.center(btn_confirm)
-            pag.leftClick(btn_x, btn_y)
-            cnt += 1
-            time.sleep(0.1)
-            takess(x, y)
-            i += 1
-            time.sleep(0.05)
-        elif btn_confirm_blue != None:
-            btn_x, btn_y = pag.center(btn_confirm_blue)
-            pag.leftClick(btn_x, btn_y)
-            cnt += 1
-            time.sleep(0.1)
-            takess(x, y)
-            i += 1
-            time.sleep(0.05)
+            time.sleep(2)
+        else:
+            btn_confirm = pag.locateOnScreen('confirm.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
+            if btn_confirm != None:
+                btn_x, btn_y = pag.center(btn_confirm)
+                pag.leftClick(btn_x, btn_y)
+                cnt += 1
+                time.sleep(0.1)
+                takess(x, y)
+                i += 1
+                time.sleep(2)
+            else:
+                btn_confirm_blue = pag.locateOnScreen('blue_confirm.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
+                if btn_confirm_blue != None:
+                    btn_x, btn_y = pag.center(btn_confirm_blue)
+                    pag.leftClick(btn_x, btn_y)
+                    cnt += 1
+                    time.sleep(0.1)
+                    takess(x, y)
+                    i += 1
+                    time.sleep(2)
+                else:
+                    continue
 
-    time.sleep(0.5)
+    time.sleep(2)
+
