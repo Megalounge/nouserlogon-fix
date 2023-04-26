@@ -17,7 +17,7 @@ def takess(x, y):
         
         btn_reconnect = pag.locateOnScreen('reconnect.png', region=(active_window.left, active_window.top, active_window.width, active_window.height), confidence=0.8)
         if btn_reconnect != None:
-            reconnect_x, reconnect_y = pag.center(reconnect_btn)
+            reconnect_x, reconnect_y = pag.center(btn_reconnect)
             pag.leftClick(reconnect_x, reconnect_y)
             
                 time.sleep(0.5)
