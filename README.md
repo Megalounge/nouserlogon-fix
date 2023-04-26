@@ -1,6 +1,10 @@
 # nouserlogon-fix aka csgo popup handler
 
-This script theorectically works on any resolution, you just have to change the ROWS and COLUMNS according to your usual csgo windows setup, for example in 1080p there are 2 ROWS and 5 COLUMNS
+Main code contribution thanks to fantasy#0777, his method is way better than mine.
+
+This script theorectically works on any resolution, as long as CSGO windows stays on top
+
+The script features popup detector and screenshot saver, it will automatically log when there's a popup and save the screenshot of the window.
 
 # Setting up Python and script
 
@@ -26,9 +30,7 @@ Open the python script with IDLE, and Run the module
 
 Profit!
 
-You can run the following command in your csgo console to test if this works for you.
+You can run the command below in your csgo console to test if this works for you.
 ```
-disconnect "No user logon."
-disconnect "Steam is required to join a game. Please check your connection to Steam and try again."
-disconnect "The remote host stopped receiving communications and closed the connection."
+disconnect "anything you want to put in here"
 ```
