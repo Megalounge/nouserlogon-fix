@@ -9,7 +9,7 @@ i = 1
 print("Script initialized, waiting")
 
 def takess(x, y):
-        print(f'[{datetime.now().strftime("%H:%M:%S")}] Found error on {cnt} account(s), clicked OK')
+        print(f'[{datetime.now().strftime("%H:%M:%S")}] Found error on {cnt} account(s), clicked OK.')
         fname = "error" + str(i) + ".png"
         active_window = pgw.getActiveWindow()
         im1 = pag.screenshot(region=(active_window.left, active_window.top, active_window.width, active_window.height))
@@ -17,6 +17,7 @@ def takess(x, y):
         
         btn_reconnect = pag.locateOnScreen('reconnect.png', region=(active_window.left, active_window.top, active_window.width, active_window.height), confidence=0.8)
         if btn_reconnect != None:
+            print(f'[{datetime.now().strftime("%H:%M:%S")}] Found RECONNECT button, reconnecting...')
             reconnect_x, reconnect_y = pag.center(btn_reconnect)
             pag.leftClick(reconnect_x, reconnect_y)
             
