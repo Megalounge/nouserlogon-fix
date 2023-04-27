@@ -3,7 +3,7 @@ import pyautogui as pag
 from datetime import datetime
 import time
 
-cnt = 0
+cnt = 1
 i = 1
 
 print("Script initialized, waiting")
@@ -15,6 +15,8 @@ def takess(x, y):
         im1 = pag.screenshot(region=(active_window.left, active_window.top, active_window.width, active_window.height))
         im1.save(r"./errors/" + fname)
         
+def is_reconnect(x, y):
+        active_window = pgw.getActiveWindow()
         btn_reconnect = pag.locateOnScreen('reconnect.png', region=(active_window.left, active_window.top, active_window.width, active_window.height), confidence=0.9)
         if btn_reconnect != None:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Found RECONNECT button, reconnecting...')
@@ -45,37 +47,40 @@ while True:
 
         btn_ok = pag.locateOnScreen('ok.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
         if btn_ok != None:
+            takess(x, y)
             btn_x, btn_y = pag.center(btn_ok)
             pag.leftClick(btn_x, btn_y)
             time.sleep(0.2)
             pag.leftClick(btn_x, btn_y)
             cnt += 1
             time.sleep(1)
-            takess(x, y)
+            is_reconnect(x, y)
             i += 1
             time.sleep(2)
         else:
             btn_confirm = pag.locateOnScreen('confirm.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
             if btn_confirm != None:
+                takess(x, y)
                 btn_x, btn_y = pag.center(btn_confirm)
                 pag.leftClick(btn_x, btn_y)
                 time.sleep(0.2)
                 pag.leftClick(btn_x, btn_y)
                 cnt += 1
                 time.sleep(1)
-                takess(x, y)
+                is_reconnect(x, y)
                 i += 1
                 time.sleep(2)
             else:
                 btn_confirm_blue = pag.locateOnScreen('blue_confirm.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
                 if btn_confirm_blue != None:
+                    takess(x, y)
                     btn_x, btn_y = pag.center(btn_confirm_blue)
                     pag.leftClick(btn_x, btn_y)
                     time.sleep(0.2)
                     pag.leftClick(btn_x, btn_y)
                     cnt += 1
                     time.sleep(1)
-                    takess(x, y)
+                    is_reconnect(x, y)
                     i += 1
                     time.sleep(2)
                 else:
