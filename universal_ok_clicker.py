@@ -15,10 +15,11 @@ def takess(x, y):
         im1 = pag.screenshot(region=(active_window.left, active_window.top, active_window.width, active_window.height))
         im1.save(r"./errors/" + fname)
         
-        btn_reconnect = pag.locateOnScreen('reconnect.png', region=(active_window.left, active_window.top, active_window.width, active_window.height), confidence=0.95)
+        btn_reconnect = pag.locateOnScreen('reconnect.png', region=(active_window.left, active_window.top, active_window.width, active_window.height), confidence=0.9)
         if btn_reconnect != None:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Found RECONNECT button, reconnecting...')
             reconnect_x, reconnect_y = pag.center(btn_reconnect)
+            time.sleep(2)
             pag.leftClick(reconnect_x, reconnect_y)
             
             time.sleep(0.5)
@@ -49,7 +50,7 @@ while True:
             time.sleep(0.2)
             pag.leftClick(btn_x, btn_y)
             cnt += 1
-            time.sleep(0.5)
+            time.sleep(1)
             takess(x, y)
             i += 1
             time.sleep(2)
@@ -61,7 +62,7 @@ while True:
                 time.sleep(0.2)
                 pag.leftClick(btn_x, btn_y)
                 cnt += 1
-                time.sleep(0.5)
+                time.sleep(1)
                 takess(x, y)
                 i += 1
                 time.sleep(2)
@@ -73,7 +74,7 @@ while True:
                     time.sleep(0.2)
                     pag.leftClick(btn_x, btn_y)
                     cnt += 1
-                    time.sleep(0.5)
+                    time.sleep(1)
                     takess(x, y)
                     i += 1
                     time.sleep(2)
