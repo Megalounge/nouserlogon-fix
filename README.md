@@ -17,7 +17,7 @@ You need to extract **ALL** files into the same folder, otherwise it will **NOT*
 
 execute `required.bat` to install necessary libraries.
 
-Locate your `pythonw.exe` in your python install path, open properties and set it to always run as administrator
+Locate your `py.exe` in your `C:/Windows/` folder, open properties and set it to always run as administrator
 
 # Running the module
 
