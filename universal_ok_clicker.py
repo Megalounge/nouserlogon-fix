@@ -39,10 +39,15 @@ while True:
                 cs_instances.append(window)
         except pgw.PyGetWindowException:
                 print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
-                continue
+                cs_instances = [w for w in cs_instances if pgw.getWindowThreadProcessId(w)[1] != window.pid]
     
     for window in cs_instances:
-        x, y = window.center[0] + 40, window.center[1] + 8
+        try:
+            x, y = window.center[0] + 40, window.center[1] + 8
+        except pgw.PyGetWindowException:
+            print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
+            cs_instances = [w for w in cs_instances if pgw.getWindowThreadProcessId(w)[1] != window.pid]
+        
         mid_x, mid_y = window.center
 
         btn_ok = pag.locateOnScreen('ok.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
