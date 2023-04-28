@@ -3,93 +3,82 @@ import pyautogui as pag
 from datetime import datetime
 import time
 
-cnt = 1
-i = 1
+ErrorsCount = 1
 
 print("Script initialized, waiting")
 
-def takess(x, y):
-        print(f'[{datetime.now().strftime("%H:%M:%S")}] Found error on {cnt} account(s), clicked OK.')
-        fname = "error" + str(i) + ".png"
-        active_window = pgw.getActiveWindow()
-        im1 = pag.screenshot(region=(active_window.left, active_window.top, active_window.width, active_window.height))
-        im1.save(r"./errors/" + fname)
+def ErrorFound(x, y):
+        print(f'[{datetime.now().strftime("%H:%M:%S")}] Found error on {ErrorsCount} account(s), clicked OK.')
+        FileName = "error" + str(ErrorsCount) + ".png"
+        ActiveWindow = pgw.getActiveWindow()
+        ErrorImage = pag.screenshot(region=(ActiveWindow.left, ActiveWindow.top, ActiveWindow.width, ActiveWindow.height))
+        ErrorImage.save(r"./errors/" + FileName)
         
-def is_reconnect(x, y):
-        active_window = pgw.getActiveWindow()
-        btn_reconnect = pag.locateOnScreen('reconnect.png', region=(active_window.left, active_window.top, active_window.width, active_window.height), confidence=0.9)
-        if btn_reconnect != None:
+def ReconnectFound(x, y):
+        ActiveWindow = pgw.getActiveWindow()
+        ReconnectButton = pag.locateOnScreen('./img/reconnect.png', region=(ActiveWindow.left, ActiveWindow.top, ActiveWindow.width, ActiveWindow.height), confidence=0.9)
+        if ReconnectButton:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Found RECONNECT button, reconnecting...')
-            reconnect_x, reconnect_y = pag.center(btn_reconnect)
+            ReconnectButton_x, ReconnectButton_y = pag.center(ReconnectButton)
             time.sleep(2)
-            pag.leftClick(reconnect_x, reconnect_y)
+            pag.leftClick(ReconnectButton_x, ReconnectButton_y)
             
             time.sleep(0.5)
 
-
 while True:
     time.sleep(0.1)
-    cs_instances = []
+    CSWindows = []
 
-    for window in pgw.getAllWindows():
+    for Window in pgw.getAllWindows():
         # 389 309 = windowed
         # 389 280 = windowed borderless
         try:
-           if (window.width == 389 or window.width == 383) and (window.height == 280 or window.height == 309):
-                cs_instances.append(window)
+           if (Window.width == 389 or Window.width == 383) and (Window.height == 280 or Window.height == 309):
+                CSWindows.append(Window)
         except pgw.PyGetWindowException:
                 print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
-                cs_instances = [w for w in cs_instances if pgw.getWindowThreadProcessId(w)[1] != window.pid]
+                CSWindows = [w for w in CSWindows if pgw.getWindowThreadProcessId(w)[1] != Window.pid]
     
-    for window in cs_instances:
+    for Window in CSWindows:
         try:
-            x, y = window.center[0] + 40, window.center[1] + 8
+            x, y = Window.center[0] + 40, Window.center[1] + 8
         except pgw.PyGetWindowException:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
-            cs_instances = [w for w in cs_instances if pgw.getWindowThreadProcessId(w)[1] != window.pid]
+            CSWindows = [w for w in CSWindows if pgw.getWindowThreadProcessId(w)[1] != Window.pid]
         
-        mid_x, mid_y = window.center
+        Window_x, Window_y = Window.center
 
-        btn_ok = pag.locateOnScreen('ok.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
-        if btn_ok != None:
-            takess(x, y)
-            btn_x, btn_y = pag.center(btn_ok)
-            pag.leftClick(btn_x, btn_y)
+        OKButton = pag.locateOnScreen('./img/ok.png', region=(Window_x, Window_y, 100, 100), confidence=0.8)
+        ConfirmButton = pag.locateOnScreen('./img/confirm.png', region=(Window_x, Window_y, 100, 100), confidence=0.8)
+        BlueConfirmButton = pag.locateOnScreen('./img/blue_confirm.png', region=(Window_x, Window_y, 100, 100), confidence=0.8)
+
+        if OKButton:
+            ErrorFound(x, y)
+            Button_x, Button_y = pag.center(OKButton)
+            pag.leftClick(Button_x, Button_y)
             time.sleep(0.2)
-            pag.leftClick(btn_x, btn_y)
-            cnt += 1
+            pag.leftClick(Button_x, Button_y)
+            ErrorsCount += 1
             time.sleep(1)
-            is_reconnect(x, y)
-            i += 1
+            ReconnectFound(x, y)
             time.sleep(2)
-        else:
-            btn_confirm = pag.locateOnScreen('confirm.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
-            if btn_confirm != None:
-                takess(x, y)
-                btn_x, btn_y = pag.center(btn_confirm)
-                pag.leftClick(btn_x, btn_y)
-                time.sleep(0.2)
-                pag.leftClick(btn_x, btn_y)
-                cnt += 1
-                time.sleep(1)
-                is_reconnect(x, y)
-                i += 1
-                time.sleep(2)
-            else:
-                btn_confirm_blue = pag.locateOnScreen('blue_confirm.png', region=(mid_x, mid_y, 100, 100), confidence=0.8)
-                if btn_confirm_blue != None:
-                    takess(x, y)
-                    btn_x, btn_y = pag.center(btn_confirm_blue)
-                    pag.leftClick(btn_x, btn_y)
-                    time.sleep(0.2)
-                    pag.leftClick(btn_x, btn_y)
-                    cnt += 1
-                    time.sleep(1)
-                    is_reconnect(x, y)
-                    i += 1
-                    time.sleep(2)
-                else:
-                    continue
-
-    time.sleep(2)
-
+        elif ConfirmButton:
+            ErrorFound(x, y)
+            Button_x, Button_y = pag.center(ConfirmButton)
+            pag.leftClick(Button_x, Button_y)
+            time.sleep(0.2)
+            pag.leftClick(Button_x, Button_y)
+            ErrorsCount += 1
+            time.sleep(1)
+            ReconnectFound(x, y)
+            time.sleep(2)
+        elif BlueConfirmButton:
+            ErrorFound(x, y)
+            Button_x, Button_y = pag.center(BlueConfirmButton)
+            pag.leftClick(Button_x, Button_y)
+            time.sleep(0.2)
+            pag.leftClick(Button_x, Button_y)
+            ErrorsCount += 1
+            time.sleep(1)
+            ReconnectFound(x, y)
+            time.sleep(2)
