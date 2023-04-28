@@ -1,6 +1,7 @@
 # nouserlogon-fix aka csgo popup handler
 
 Main code contribution thanks to fantasy#0777, his method is way better than mine.
+
 Overall readability improvement, thanks to selften#9285.
 
 This script theorectically works on any resolution, as long as CSGO windows stays on top
