@@ -41,7 +41,7 @@ while True:
     for Window in CSWindows:
         try:
             x, y = Window.center[0] + 40, Window.center[1] + 8
-        except PyGetWindowException:
+        except pgw.PyGetWindowException:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
             CSWindows = [w for w in CSWindows if w32p.getWindowThreadProcessId(w)[1] != Window.pid]
         
