@@ -1,8 +1,9 @@
+import pywinauto as pwa
 import pygetwindow as pgw
 import pyautogui as pag
 from datetime import datetime
 import time
-import win32process as w32p
+
 
 ErrorsCount = 1
 
@@ -21,7 +22,7 @@ def ReconnectFound(x, y):
         if ReconnectButton != None:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Found RECONNECT button, reconnecting...')
             ReconnectButton_x, ReconnectButton_y = pag.center(ReconnectButton)
-            time.sleep(2)
+            time.sleep(3)
             pag.leftClick(ReconnectButton_x, ReconnectButton_y)
             
             time.sleep(0.5)
@@ -31,13 +32,8 @@ while True:
     CSWindows = []
 
     for Window in pgw.getAllWindows():
-        try:
            if Window.width == 389 and Window.height == 309:
                 CSWindows.append(Window)
-        except pgw.PyGetWindowException:
-                print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
-                if Window in CSWindows:
-                    CSWindows.remove(Window)
 
     
     for Window in CSWindows:
@@ -47,6 +43,8 @@ while True:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
             if Window in CSWindows:
                 CSWindows.remove(Window)
+
+
 
         
         Window_x, Window_y = Window.center
