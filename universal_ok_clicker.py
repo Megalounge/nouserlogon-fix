@@ -2,6 +2,7 @@ import pygetwindow as pgw
 import pyautogui as pag
 from datetime import datetime
 import time
+import win32process as w32p
 
 ErrorsCount = 1
 
@@ -17,7 +18,7 @@ def ErrorFound(x, y):
 def ReconnectFound(x, y):
         ActiveWindow = pgw.getActiveWindow()
         ReconnectButton = pag.locateOnScreen('./img/reconnect.png', region=(ActiveWindow.left, ActiveWindow.top, ActiveWindow.width, ActiveWindow.height), confidence=0.9)
-        if ReconnectButton:
+        if ReconnectButton != None:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Found RECONNECT button, reconnecting...')
             ReconnectButton_x, ReconnectButton_y = pag.center(ReconnectButton)
             time.sleep(2)
@@ -30,21 +31,19 @@ while True:
     CSWindows = []
 
     for Window in pgw.getAllWindows():
-        # 389 309 = windowed
-        # 389 280 = windowed borderless
         try:
-           if (Window.width == 389 or Window.width == 383) and (Window.height == 280 or Window.height == 309):
+           if Window.width == 389 and Window.height == 309:
                 CSWindows.append(Window)
         except pgw.PyGetWindowException:
                 print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
-                CSWindows = [w for w in CSWindows if pgw.getWindowThreadProcessId(w)[1] != Window.pid]
+                CSWindows = [w for w in CSWindows if w32p.getWindowThreadProcessId(w)[1] != Window.pid]
     
     for Window in CSWindows:
         try:
             x, y = Window.center[0] + 40, Window.center[1] + 8
-        except pgw.PyGetWindowException:
+        except PyGetWindowException:
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
-            CSWindows = [w for w in CSWindows if pgw.getWindowThreadProcessId(w)[1] != Window.pid]
+            CSWindows = [w for w in CSWindows if w32p.getWindowThreadProcessId(w)[1] != Window.pid]
         
         Window_x, Window_y = Window.center
 
@@ -52,7 +51,7 @@ while True:
         ConfirmButton = pag.locateOnScreen('./img/confirm.png', region=(Window_x, Window_y, 100, 100), confidence=0.8)
         BlueConfirmButton = pag.locateOnScreen('./img/blue_confirm.png', region=(Window_x, Window_y, 100, 100), confidence=0.8)
 
-        if OKButton:
+        if OKButton != None:
             ErrorFound(x, y)
             Button_x, Button_y = pag.center(OKButton)
             pag.leftClick(Button_x, Button_y)
@@ -62,7 +61,7 @@ while True:
             time.sleep(1)
             ReconnectFound(x, y)
             time.sleep(2)
-        elif ConfirmButton:
+        elif ConfirmButton != None:
             ErrorFound(x, y)
             Button_x, Button_y = pag.center(ConfirmButton)
             pag.leftClick(Button_x, Button_y)
@@ -72,7 +71,7 @@ while True:
             time.sleep(1)
             ReconnectFound(x, y)
             time.sleep(2)
-        elif BlueConfirmButton:
+        elif BlueConfirmButton != None:
             ErrorFound(x, y)
             Button_x, Button_y = pag.center(BlueConfirmButton)
             pag.leftClick(Button_x, Button_y)
