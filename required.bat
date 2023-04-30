@@ -1,8 +1,8 @@
 @echo off
 
-pip install pywinauto
-pip install pywin32
-pip install keyboard
-pip install pyautogui
-pip install opencv-python
-pip install Pillow
+pip3 install pywinauto
+pip3 install pywin32
+pip3 install keyboard
+pip3 install pyautogui
+pip3 install opencv-python
+pip3 install Pillow
