@@ -15,7 +15,7 @@ https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe
 
 You need to extract **ALL** files into the same folder, otherwise it will **NOT** work. (except old version folder)
 
-to make the script work open CMD in admin and type in the following command `pip install -r https://raw.githubusercontent.com/fortXIV/nouserlogon-fix/main/required.txt`
+to make the script work open CMD as admin and copy the following command: `pip install -r https://raw.githubusercontent.com/fortXIV/nouserlogon-fix/main/required.txt`
 
 Locate your `pythonw.exe` in your python installed folder, open properties and set it to always run as administrator
 
