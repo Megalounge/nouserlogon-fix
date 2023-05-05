@@ -1,0 +1,7 @@
+pywinauto
+pywin32
+pygetwindow
+keyboard
+pyautogui
+opencv-python
+Pillow
