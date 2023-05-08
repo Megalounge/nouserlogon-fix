@@ -1,6 +1,5 @@
 @echo off
 
-py -m pip install pywinauto
 py -m pip install pywin32
 py -m pip install keyboard
 py -m pip install pyautogui
