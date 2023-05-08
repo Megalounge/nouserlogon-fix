@@ -1,4 +1,3 @@
-import pywinauto as pwa
 import pygetwindow as pgw
 import pyautogui as pag
 from datetime import datetime
@@ -7,14 +6,11 @@ import time
 
 ErrorsCount = 1
 
-print("Script initialized, waiting")
+print("Script initialized, waiting...")
+time.sleep(5)
 
 def ErrorFound(x, y):
         print(f'[{datetime.now().strftime("%H:%M:%S")}] Found error on {ErrorsCount} account(s), clicked OK.')
-        FileName = "error" + str(ErrorsCount) + ".png"
-        ActiveWindow = pgw.getActiveWindow()
-        ErrorImage = pag.screenshot(region=(ActiveWindow.left, ActiveWindow.top, ActiveWindow.width, ActiveWindow.height))
-        ErrorImage.save(r"./errors/" + FileName)
         
 def ReconnectFound(x, y):
         ActiveWindow = pgw.getActiveWindow()
@@ -23,6 +19,9 @@ def ReconnectFound(x, y):
             print(f'[{datetime.now().strftime("%H:%M:%S")}] Found RECONNECT button, reconnecting...')
             ReconnectButton_x, ReconnectButton_y = pag.center(ReconnectButton)
             time.sleep(3)
+            pag.leftClick(ReconnectButton_x, ReconnectButton_y)
+            ReconnectButton_x, ReconnectButton_y = pag.center(ReconnectButton)
+            time.sleep(1)
             pag.leftClick(ReconnectButton_x, ReconnectButton_y)
             
             time.sleep(0.5)
@@ -46,7 +45,7 @@ while True:
         try:
             Window_x, Window_y = Window.center
         except pgw.PyGetWindowException:
-            print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.')
+            print(f'[{datetime.now().strftime("%H:%M:%S")}] Caught error! Please check your CSGO status.') # Remove this line if this message spams
             if Window in CSWindows:
                 CSWindows.remove(Window)
 
