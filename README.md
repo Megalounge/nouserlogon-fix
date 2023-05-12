@@ -6,8 +6,6 @@ Overall readability improvement, thanks to **selften#9285**.
 
 This script theorectically works on any resolution, as long as CSGO windows stays on top
 
-The script features popup detector and screenshot saver, it will automatically log when there's a popup and save the screenshot of the window.
-
 # Setting up Python and script
 
 Download python from their website
